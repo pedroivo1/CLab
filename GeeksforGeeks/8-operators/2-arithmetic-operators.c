@@ -3,11 +3,18 @@
 int main()
 {
    int a = 25, b = 5;
-   printf("a = 25\nb = 5\n\n");
+
+   printf("\na = 25\n");
+   printf("b = 5\n\n");
+
    printf("a + b = %d\n", a + b);
    printf("a - b = %d\n", a - b);
    printf("a * b = %d\n", a * b);
    printf("a / b = %d\n", a / b);
+   printf("+a = %d\n", +a);
+   printf("-a = %d\n", -a);
+   printf("++a = %d\n", ++a);
+   printf("--a = %d\n", --a);
 
    return 0;
 }
