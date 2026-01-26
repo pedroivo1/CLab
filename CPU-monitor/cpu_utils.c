@@ -3,28 +3,37 @@
 #include <stdlib.h>
 #include "cpu_utils.h"
 
-void cpu_info(int *cores, int size)
+void cpu_info()
 {
-    FILE *cpu_info = fopen("/proc/cpuinfo", "r");
-    if (cpu_info == NULL) return;
+    const char *path = "/proc/cpuinfo";
+    FILE *fptr = fopen(path, "r");
+    if (fptr == NULL)
+    {
+        printf("File not found: %s", path);
+        exit(1);
+    }
 
     char buff[256];
-    int i = 0;
-    while(fgets(buff, sizeof(buff), cpu_info) && i < size - 1)
+    while(fgets(buff, sizeof(buff), fptr))
     {
         printf("%s", buff);
     }
-    fclose(cpu_info);
+    fclose(fptr);
 }
 
 void cpu_ids(int *cores, int size)
 {
-    FILE *cpu_info = fopen("/proc/cpuinfo", "r");
-    if (cpu_info == NULL) return;
+    const char *path = "/proc/cpuinfo";
+    FILE *fptr = fopen(path, "r");
+    if (fptr == NULL)
+    {
+        printf("File not found: %s", path);
+        exit(1);
+}
 
     char buff[256];
     int i = 0;
-    while(fgets(buff, sizeof(buff), cpu_info) && i < size - 1)
+    while(fgets(buff, sizeof(buff), fptr) && i < size - 1)
     {
         int match = strncmp(buff, "processor", 9);
         if(match == 0)
@@ -39,5 +48,5 @@ void cpu_ids(int *cores, int size)
     }
     cores[i] = -1;
 
-    fclose(cpu_info);
+    fclose(fptr);
 }
