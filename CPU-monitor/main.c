@@ -1,26 +1,27 @@
 #include <stdio.h>
-#include "cpu_utils.h"
+#include <unistd.h>
+#include <signal.h>
+#include "utils.h"
+
+#define CLOCK 200000
 
 int main()
 {
-    int size = 32;
-    int cores[size];
-    cpu_ids(cores, size);
-    
-    int i = 0;
-    while(cores[i] != -1)
-    {
-        printf("%d\n", cores[i++]);
-    }
+    // signal(SIGINT, handle_exit);
 
+    // printf("\033[?1049h");
+    // printf("\033[?25l");
+
+    // int i = 0;
+    // while(1)
+    // {
+    //     printf("\033[H");
+    //     printf("Clocks: %d\n", i++);
+    //     cpu_monitor();
+    //     usleep(CLOCK);
+    // }
+
+    char dir[8][16];
+    ls_subdirs("/sys/class/hwmon/", dir, 8);
     return 0;
 }
-
-            // char cpu_temp_info[64];
-            // snprintf(cpu_temp_info, sizeof(cpu_temp_info), "/sys/class/hwmon/hwmon8/temp%d_label", core_id+2 % 7);
-            // FILE *temp_label = fopen(cpu_temp_info, "r");
-            // while(fgets(cpu_temp_info, sizeof(cpu_temp_info), temp_label))
-            // {
-            //     printf("%s", cpu_temp_info);
-            // }
-            // fclose(temp_label);

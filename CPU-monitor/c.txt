@@ -1,2 +1,3 @@
 grep "" /sys/class/hwmon/hwmon*/name
 cat /sys/class/hwmon/hwmon8/temp*_label
+cat /proc/cpuinfo
