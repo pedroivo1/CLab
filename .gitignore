@@ -1,0 +1,5 @@
+# igone every thing without ., exept Makefile
+*
+!*/
+!*.*
+!Makefile
