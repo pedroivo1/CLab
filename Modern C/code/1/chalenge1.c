@@ -1,54 +1,23 @@
 #include <stddef.h>
 
-void merge(int arr[], size_t start, size_t middle, size_t end) {
+void merge(int arr[static 1], size_t left, size_t middle, size_t right)
+{
+    size_t l_len = middle;
+    size_t r_len = right - middle;
 
-    size_t left_size = middle - start + 1;
-    size_t right_size = end - middle;
+    int l_arr[l_len];
+    int r_arr[r_len];
 
-    int left_arr[left_size], right_arr[right_size];
-
-    for (size_t i = 0; i < left_size; i++) {
-        left_arr[i] = arr[start + i];
-    }
-    for (size_t i = 0; i < right_size; i++) {
-        right_arr[i] = arr[middle + 1 + i];
-    }
-
-    size_t i = 0;
-    size_t j = 0;
-    size_t k = start;
-    while (i < left_size && j < right_size) {
-        if (left_arr[i] <= right_arr[j]) {
-            arr[k] = left_arr[i];
-            i++;
-        } else {
-            arr[k] = right_arr[j];
-            j++;
-        }
-        k++;
-    }
-
-    while (i < left_size) {
-        arr[k] = left_arr[i];
-        i++;
-        k++;
-    }
-
-    while (j < right_size) {
-        arr[k] = right_arr[j];
-        j++;
-        k++;
-    }
+    size_t l_idx = left;
+    size_t r_idx = middle + 1;
 }
 
-void merge_sort(int arr[], size_t start, size_t end) {
-    if (start < end) {
-        size_t middle = start + (end - start) / 2;
-
-        merge_sort(arr, start, middle);
-        merge_sort(arr, middle + 1, end);
-        
-        merge(arr, start, middle, end);
+void merge_sort(int arr[static 1], size_t left, size_t right)
+{
+    if (left < right)
+    {
+        size_t middle = left + (right - left) / 2;
+        merge_sort(arr, left, middle);
+        merge_sort(arr, middle + 1, right);
     }
-
 }
