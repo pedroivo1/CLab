@@ -1,0 +1,5 @@
+a. Statement is a comand line, witch is finished with a semicolon (;), but comment is a text about source code that is ignored by compiler, it's usefull to anotet something in the code, and starts with '//' or is between '/* */'.
+
+b. When a program is portable it can run in more than one machine, even when they aren't the same model.
+
+c. An executable is the binary compiled of a source code.
